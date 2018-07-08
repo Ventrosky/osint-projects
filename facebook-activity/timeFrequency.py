@@ -4,10 +4,6 @@
 from datetime import datetime
 import sys, codecs, pprint, csv
 
-# UTC == ROME -2h
-# 1409011201 equivalent to: 08/26/2014 @ 12:00am (UTC)
-# 1530921601 equivalent to: 07/07/2018 @ 12:00am (UTC) 
-
 filesIN = ["TS1.txt", "TS2.txt", "TS3.txt"]
 
 def openStampFile(file1):
