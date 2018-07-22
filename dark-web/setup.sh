@@ -11,9 +11,9 @@ gvm use go1.10
 go get github.com/s-rah/onionscan
 go install github.com/s-rah/onionscan
 
-echo "ControlPort 9051" >> /etc/tor/torrc
+echo "ControlPort xxxx" >> /etc/tor/torrc
 echo "ControlListenAddress 127.0.0.1" >> /etc/tor/torrc
-echo "HashedControlPassword 16:3E73307B3E434914604C25C498FBE5F9B3A3AE2FB97DAF70616591AAF8" >> /etc/tor/torrc
+echo "HashedControlPassword xx:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" >> /etc/tor/torrc
 
 service tor restart
 
