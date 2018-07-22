@@ -6,6 +6,6 @@ Project inspired from the article ["When People Sleep: Determine Facebook Activi
 * [Link to Data Viz](https://codepen.io/BuccaneerDev/full/bKXqZy/)
 * Using: **JavaScript**, **D3js** and **Python**.
 
-## Dark-Web
+## dark-web
 Scripts from the blog post ["Dark Web OSINT With Python and OnionScan"](http://www.automatingosint.com/blog/2016/07/dark-web-osint-with-python-and-onionscan-part-one/) written by Justin Seitz.
 * Using: **Python**
