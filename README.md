@@ -8,5 +8,4 @@ Project inspired from the article ["When People Sleep: Determine Facebook Activi
 
 ## dark-web
 Scripts from the blog posts on Dark Web OSINT from ["AutomatingOSINT.com"](http://www.automatingosint.com/blog/category/dark-web/) written by Justin Seitz.
-* Using: **Python**
-* Tools: **OnionScan**, **Shodan**
+* Using: **Python**, **OnionScan**, **Shodan**
