@@ -22,19 +22,27 @@ for json_file in file_list:
                 	key_to_hosts[scan_result['sshKey']] = [scan_result['hiddenService']]
         except ValueError:
         	print "Oops! The JSON object gived problems...", fd
-            
+
 for ssh_key in key_to_hosts:
-    if len(key_to_hosts[ssh_key]) > 1:
-        print "[!] SSH Key %s is used on multiple hidden services." % ssh_key
+	count = 0
+	if len(key_to_hosts[ssh_key]) > 1:
+		print "[!] SSH Key %s is used on multiple hidden services." % ssh_key
         for key in key_to_hosts[ssh_key]:
-            print "\t%s" % key           
-    while True:
-        try:
-            shodan_result = shodan_client.search(ssh_key)
-            break
-        except:
-            time.sleep(5)
-            pass
-    if shodan_result['total'] > 0:
-        for hit in shodan_result['matches']:
-            print "[!] Hit for %s on %s for hidden services %s" % (ssh_key,hit['ip_str'],",".join(key_to_hosts[ssh_key]))
+            print "\t%s" % key
+	while True:
+		try:
+			shodan_result = shodan_client.search(ssh_key)
+			break
+		except:
+			count+=1
+			if count < 10:
+				time.sleep(5)
+				pass
+			else:
+				break
+	try:
+		if shodan_result['total'] > 0:
+			for hit in shodan_result['matches']:
+				print "[!] Hit for %s on %s for hidden services %s" % (ssh_key,hit['ip_str'],",".join(key_to_hosts[ssh_key]))
+	except NameError:
+		print "Oops! 'shodan_result' is not defined..."	
