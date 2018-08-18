@@ -12,13 +12,16 @@ key_to_hosts = {}
 
 for json_file in file_list:
     with open(json_file,"rb") as fd:
-        scan_result = json.load(fd)
-        if scan_result['sshKey']:
-            print "%s => %s" % (scan_result['hiddenService'],scan_result['sshKey'])
-            if key_to_hosts.has_key(scan_result['sshKey']):
-                key_to_hosts[scan_result['sshKey']].append(scan_result['hiddenService'])
-            else:
-                key_to_hosts[scan_result['sshKey']] = [scan_result['hiddenService']]
+        try:
+        	scan_result = json.load(fd)
+        	if scan_result['sshKey']:
+        		print scan_result['hiddenService'], " => ",scan_result['sshKey']
+            	if key_to_hosts.has_key(scan_result['sshKey']):
+                	key_to_hosts[scan_result['sshKey']].append(scan_result['hiddenService'])
+            	else:
+                	key_to_hosts[scan_result['sshKey']] = [scan_result['hiddenService']]
+        except ValueError:
+        	print "Oops! The JSON object gived problems...", fd
             
 for ssh_key in key_to_hosts:
     if len(key_to_hosts[ssh_key]) > 1:
