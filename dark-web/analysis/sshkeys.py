@@ -1,7 +1,4 @@
-import glob
-import json
-import shodan
-import time
+import glob, json, shodan, time, codecs
 
 shodan_client = shodan.Shodan("XXXXKEY")
 
@@ -28,7 +25,7 @@ for ssh_key in key_to_hosts:
 	if len(key_to_hosts[ssh_key]) > 1:
 		print "[!] SSH Key %s is used on multiple hidden services." % ssh_key
         for key in key_to_hosts[ssh_key]:
-            print "\t%s" % key
+            print "\t%s" % key.encode("utf-8")
 	while True:
 		try:
 			shodan_result = shodan_client.search(ssh_key)
